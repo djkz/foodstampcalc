@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Food Stamp Calculator</title>
+<meta name="description" content="Calculate estemated food stamp benefits" />
+
+<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" /> 
+<meta http-equiv="Content-Language" content="en-us" />
+<meta name="City" content="Salt Lake City" />
+<meta name="State" content="UT" />
+<meta name="Revisit-after" content="7 days" />
+
+<meta name="Copyright" content="2011 Copyright" />
+<meta name="Distribution" content="Global" />
+
+<link href="css/default.css" rel="stylesheet" type="text/css" />
+
+<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="js/calc.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body class="calcbody">
+	<div id="overlay"></div>  
+	<div id="noqualify" class="tipbox" style="top:30%;left:50%;margin-left:-200px;width:400px;">
+		<h5 class="red">Ineligible</h5>
+		<p>We're sorry. By our calculations, you are not eligible for food stamps.  But this is only an estimation not a determination by DWS.  Consider applying for food stamps anyway.  <a href="https://utahhelps.utah.gov/" target="_blank">https://utahhelps.utah.gov/</a></p>
+	</div>
+	<div id="toolow" class="tipbox" style="top:30%;left:50%;margin-left:-200px;width:400px;">
+		<h5 class="red">0 Household Members</h5>
+		<p>You must have at least one person in your household in order for us to calculate your benefits.</p>
+	</div>
+	<div id="toohigh" class="tipbox" style="top:30%;left:50%;margin-left:-200px;width:400px;">
+		<h5 class="red">Net Income Exceeds Limit</h5>
+		<p>We're sorry. Your Net Income is too high to be eligible for food stamps.</p>
+	</div>
+	<div class="calcupper">
+		<div class="calcheader">
+			<div class="calclogo"></div>		
+		</div>
+		<div class="calccontent">
+			<div class="step3">
+				<form>
+					<div class="fieldset">
+						<a class="hint" href="javascript:void(0);" title="Click here for hints"></a>
+						<div id="tip1" class="tipbox" style="top:20px;">
+							<h5>Who is part of my household?</h5>
+							<p>If your family buys, prepares, and stores food separately from another family that lives with you, then you may be considered separate households.  Otherwise, both families will be considered part of the same household for food stamps.</p>
+						</div>
+						<label for="people">How many people in your household?</label>
+						<input type="text" class="calctext" size="20" name="people" id="people" tabindex="1" />
+					</div>
+					<div class="fieldset">
+						<a class="hint" href="javascript:void(0);" title="Click here for hints"></a>
+						<div id="tip2" class="tipbox" style="top:45px;">
+							<h5>What counts as income?</h5>
+							<p>Enter your monthly income before taxes.  Include the income of anyone in your household over the age of 17.  If you have children who do not go to school and have a job, their income must also be counted.</p>
+							<h5>What do I do if my earned income changes from month to month?</h5>
+							<p>Take your best guess based on your current work situation.  When you apply for food stamps, they will ask you for check stubs from one to three months back to determine your expected income.  If you do not have a job, enter $0.  The food stamp office can help you determine your average income.</p>
+						</div>
+						<label for="eincome">Expected Gross Earned Income (per month)</label>
+						<input type="text" class="calctext" size="20" name="eincome" id="eincome" tabindex="2" />
+					</div>
+					<div class="fieldset">
+						<a class="hint" href="javascript:void(0);" title="Click here for hints"></a>
+						<div id="tip3" class="tipbox" style="top:88px;">
+							<h5>What counts as unearned income?</h5>
+							<p>This could include child support, Social Security, financial assistance, or regular payments you receive from a family member or friend.  Lump sums of cash (such as from a tax return or one-time loan) do not count as income.</p>
+						</div>
+						<label for="ueincome">Expected Gross Unearned Income (per month)</label>
+						<input type="text" class="calctext" size="20" name="ueincome" id="ueincome" tabindex="3"/>
+					</div>
+					<div class="fieldset">
+						<a class="hint" href="javascript:void(0);" title="Click here for hints"></a>
+						<div id="tip5" class="tipbox" style="top:120px;">
+							<h5>What counts as dependent care costs?</h5>
+							<p>Usually this is for child care costs.  If you pay for someone to care for a child so that you can work, look for work, or go to school, then  enter that cost here.</p>
+						</div>
+						<label for="childcare">Monthly Childcare Costs</label>
+						<input type="text" class="calctext" size="20" name="childcare" id="childcare" tabindex="4"/>
+					</div>
+					<div class="fieldset">
+						<a class="hint" href="javascript:void(0);" title="Click here for hints"></a>
+						<div id="tip6" class="tipbox" style="top:155px;">
+							<h5>What are child support costs?</h5>
+							<p>If you are legally obligated to pay child support costs, enter the monthly amount here.</p>
+						</div>
+						<label for="childsupport">Monthly Child Support Costs</label>
+						<input type="text" class="calctext" size="20" name="childsupport" id="childsupport" tabindex="5" />
+					</div>
+					<div class="fieldset">
+						<a class="hint" href="javascript:void(0);" title="Click here for hints"></a>
+						<div id="tip7" class="tipbox" style="top:185px;">
+							<h5>What counts toward my rent or mortgage cost?</h5>
+							<p>Enter the cost for your mortgage or rent.  If you own the home, you can also include your property tax and homeowner's insurance.</p>
+						</div>
+						<label for="rent">Rent or Mortgage</label>
+						<input type="text" class="calctext" size="20" name="rent" id="rent" tabindex="6"  />
+					</div>
+					<div class="fieldset">
+						<a class="hint" href="javascript:void(0);" title="Click here for hints"></a>
+						<div id="tip8" class="tipbox" style="top:20px;">
+							<h5>Which utility option should I choose?</h5>
+							<ul>
+								<li><strong>"All Utilities"</strong> if you pay the costs to heat and cool your apartment separate from your rent.  These costs can include gas or electric heating, wood or coal for stoves, kerosene, etc.  Cooling costs mean that you pay to run an air conditioner or swamp cooler.  Fans do not count.  Choose this option if you receive HEAT assistance.</li>
+								<li><strong>"All Utilities Except Heating and Cooling"</strong> if you pay for water, electricity, etc. separate from your rent, but your heating and cooling costs are included with your rent.</li>  
+								<li><strong>"Telephone Only"</strong> if you pay just for a phone (cell phone or land line) separate from your rent.</li>
+								<li><strong>"No Utility Costs"</strong> if your utilities are included with your rent.  BUT, if you receive HEAT assistance, choose "Heating and Cooling" even if your utilities are included with your rent.</li>
+							</ul>
+						</div>
+						<label for="utilities" style="width:235px;">For utilities, I pay:</label>
+						<select name="utilities" id="utilities" tabindex="7">
+							<option value="279">All utilities</option>
+							<option value="190">All utilities except heating and cooling</option>
+							<option value="28">Telephone only</option>
+							<option value="0">No utility costs</option>
+						</select>
+					</div>
+					<br class="clear" />
+					<div class="calctotals">
+						<a id="calculate" class="calculate" href="#" title="Click to get your totals" tabindex="8">Calculate</a>
+						<h3>Estimated Total Monthly Benefits</h3>
+						<h2 id="result">$0.00</h2>
+					</div>
+					<div class="apply">
+						<p><a href="https://utahhelps.utah.gov/" target="_blank">Click here to apply for Food Stamps with the Utah DWS</a></p>
+					</div>
+					<div class="disclaimer">
+						<p>ATTENTION: This calculator is intended to provide an <strong><em>ESTIMATE</em></strong> on what your benefits would be. Your actual benefits may end up being slightly more or less.</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="calcfooter">
+		<div class="calccopyright">
+			&copy; 2011 Utahns Against Hunger. All Rights Reserved
+		</div>
+	</div>
+</body>
+</html>

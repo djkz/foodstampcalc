@@ -21,7 +21,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script src="js/calc_elderly.js" type="text/javascript"></script>
+<script>var elderly=true</script>
+<script src="js/calc.js" type="text/javascript"></script>
 </head>
 <body class="calcbody">
 	<div id="overlay"></div>  
@@ -121,11 +122,11 @@
 								</ul>
 							</div>
 							<label for="utilities" style="width:235px;">For utilities, I pay:</label>
-							<select name="utilities" id="utilities" tabindex="8">
-								<option value="279">All utilities</option>
-								<option value="190">All utilities except heating and cooling</option>
-								<option value="28">Telephone only</option>
-								<option value="0">No utility costs</option>
+							<select name="excess_shelter_cost" id="utilities" tabindex="7">
+								<option value="full">All utilities</option>
+								<option value="partial">All utilities except heating and cooling</option>
+								<option value="telephone">Telephone only</option>
+								<option value="none">No utility costs</option>
 							</select>
 						</div>
 						<br class="clear" />

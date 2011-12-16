@@ -262,8 +262,11 @@ $(document).ready(function() {
 			$('#overlay').show("fade", 100);
 			return false;
 		}
+		
+		
 
 		var net_income_after_housing_03 = Math.ceil( net_income_after_housing * 0.3);
+		if (net_income_after_housing_03< 0) net_income_after_housing_03 = 0;
 		var result = maximum_allotment(people) - net_income_after_housing_03;
 		if ( result < MIN_AMOUNT)
 			result = MIN_AMOUNT;
